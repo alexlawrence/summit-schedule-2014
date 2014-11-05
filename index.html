@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Summit schedule</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div id="navigation">
+    filter:
+    <select id="filter-date">
+      <option value="nov5">nov5</option>
+      <option value="nov6">nov6</option>
+    </select>
+    <select id="filter-location">
+      <option value="all">all</option>
+      <option value="library">library</option>
+      <option value="enterprise">enterprise</option>
+      <option value="builders">builders</option>
+      <option value="machine">machine</option>
+    </select>
+    sort:
+    <select id="sort">
+      <option value="time_asc">time ascending</option>
+      <option value="time_desc">time descending</option>
+      <option value="location">location</option>
+      <option value="title">title</option>
+    </select>
+    <button id="show-schedules">show schedule</button>
+    <button id="show-remembered-talks">show remembered talks</button>
+    <button id="delete-remembered-talks">delete all remembered talks</button>
+  </div>
+  <div id="content">
+    <div id="talks">
+
+    </div>
+    <div id="talk-template" hidden>
+      <div class="talk" data-id="{{id}}">
+        <div class="time">{{start_time}} - {{end_time}}</div>
+        <div class="title">{{title}}</div>
+        <div class="location">{{location}}</div>
+        <a href="#" class="toggle-description">toggle description</a>
+        <div class="description" style="display: none">{{description}}</div>
+        <button class="{{action}}-talk" data-id="{{id}}">{{action}} talk</button>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="//code.jquery.com/jquery-git2.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+</body>
+</html>

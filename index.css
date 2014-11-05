@@ -1,0 +1,43 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+
+#navigation {
+  position: fixed;
+  background-color: #FFF;
+  width: 100%;
+}
+
+#filter-location:before {
+  content: 'Filter location';
+}
+
+#content {
+  padding-top: 50px;
+  width: 100%;
+}
+
+.time {
+  width: 100%;
+}
+
+.title {
+  clear: both;
+  width: 100%;
+  font-weight: bold;
+}
+
+.remember-talk, .forget-talk {
+  width: 100%;
+}
+
+.toggle-description {
+  width: 100%;
+  display: block;
+}
+
+.location {
+  width: 100%;
+}
