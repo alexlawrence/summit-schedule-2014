@@ -2,8 +2,10 @@ var scheduledTalks = [];
 var talksElement = $('#talks');
 var talkTemplateElement = $('#talk-template');
 var talksUrl = 'https://websummit.cloudant.com/websummit2014/_all_docs?include_docs=true';
+var now = new Date();
+var selectedDay = 'nov' + now.getDate();
 var filterCriteria = {
-  date: 'nov5'
+  date: selectedDay
 };
 var showingRememberedTalks = false;
 
@@ -99,6 +101,7 @@ var getRememberedTalkIds = function() {
 };
 
 $(document).ready(function() {
+  $('#filter-date').find('[value="' + selectedDay + '"]').attr('selected', 'selected');
   $.getJSON(talksUrl, function(result) {
     scheduledTalks = transformTalks(result);
     sortTalks('start_time_numeric', 1);
