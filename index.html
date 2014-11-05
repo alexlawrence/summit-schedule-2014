@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Summit schedule 2014</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
 </head>
 <body>
   <div class="navbar navbar-inverse navbar-fixed-top">
@@ -60,24 +59,14 @@
     <div class="talk" style="margin-bottom: 25px">
       <div class="row">
         <div class="col-md-12">{{start_time}} - {{end_time}}</div>
-      </div>
-      <div class="row">
         <div class="col-md-12"><strong>{{title}}</strong></div>
-      </div>
-      <div class="row">
         <div class="col-md-12">{{location}}</div>
-      </div>
-      <div class="row">
-        <a href="#" class="col-md-12 toggle-description">show/hide description & speakers</a>
-      </div>
-      <div class="row">
+        <div class="col-md-12"><a href="#" class="toggle-description">show/hide description & speakers</a></div>
         <div class="col-md-12 description" style="display: none">
           <strong>Description:</strong> {{description}}
           <br>
           <strong>Speakers:</strong> {{speakers}}
         </div>
-      </div>
-      <div class="row">
         <div class="col-md-12">
           <button class="{{action}}-talk btn btn-xs btn-primary" data-id="{{id}}">{{action}} talk</button>
         </div>
@@ -85,7 +74,6 @@
     </div>
   </div>
   <script type="text/javascript" src="//code.jquery.com/jquery-git2.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="index.js"></script>
 </body>
 </html>
