@@ -8,9 +8,8 @@ var filterCriteria = {
 var showingRememberedTalks = false;
 
 var transformTalks = function(rawData) {
-  console.log(rawData.rows[0]);
   return rawData.rows.filter(function(row) {
-    return row.doc.type && row.doc.type.name == 'talk';
+    return row.doc.type && row.doc.type.name == 'talk' && row.doc.summit && row.doc.summit.value;
   }).map(function(row) {
     return {
       id: row.id,
