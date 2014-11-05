@@ -8,14 +8,17 @@ var filterCriteria = {
 var showingRememberedTalks = false;
 
 var transformTalks = function(rawData) {
+  console.log(rawData[0]);
   return rawData.rows.filter(function(row) {
     return row.doc.type && row.doc.type.name == 'talk' && row.doc.summit && row.doc.summit.value;
   }).map(function(row) {
+    var hoursAndMinutes = row.doc.start_time.split(':');
     return {
       id: row.id,
       title: row.doc.title,
       description: row.doc.description,
       start_time: row.doc.start_time,
+      start_time_numeric: parseInt(hoursAndMinutes[0], 10) + (parseInt(hoursAndMinutes[1], 10) / 60),
       end_time: row.doc.end_time,
       location: row.doc.summit.name,
       locationId: row.doc.summit.value,
@@ -63,7 +66,7 @@ var filterTalks = function(talks) {
 
 var sortTalks = function(key, order) {
   scheduledTalks.sort(function(a, b) {
-    return order == 1 ? a[key] > b[key] : a[key] < b [key];
+    return (order == 1) ? a[key] - b[key] : b[key] - a[key];
   });
 };
 
@@ -94,7 +97,7 @@ var getRememberedTalkIds = function() {
 $(document).ready(function() {
   $.getJSON(talksUrl, function(result) {
     scheduledTalks = transformTalks(result);
-    sortTalks('start_time', 1);
+    sortTalks('start_time_numeric', 1);
     filterAndRenderTalks();
   });
 });
@@ -117,10 +120,10 @@ $('#filter-date').change(function(event) {
 $('#sort').change(function(event) {
   var sortCriteria = $(event.target).val();
   if (sortCriteria == 'time_asc') {
-    sortTalks('start_time', 1);
+    sortTalks('start_time_numeric', 1);
   }
   else if (sortCriteria == 'time_desc') {
-    sortTalks('start_time', -1);
+    sortTalks('start_time_numeric', -1);
   }
   else {
     sortTalks(sortCriteria, 1);
@@ -169,6 +172,5 @@ $(document).on('click', '.forget-talk', function(event) {
 $(document).on('click', '.toggle-description', function(event) {
   var talk = $(this).closest('.talk');
   talk.find('.description').toggle();
-  talk.find('.speakers').toggle();
   return false;
 });

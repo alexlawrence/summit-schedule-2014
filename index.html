@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
 </head>
 <body>
-  <div id="navigation" style="position:fixed;background-color:#FFF;overflow:auto;z-index:1;" class="container-fluid">
+  <div id="navigation" style="position:fixed;background-color:#FFF;overflow:auto;z-index:1;width:100%" class="container-fluid">
     <div class="row">
       <div class="col-md-12 col-xs-12">
         <h3>Summit schedule 2014</h3>
@@ -60,7 +60,7 @@
       </div>
     </div>
   </div>
-  <div id="talks" class="container-fluid" style="padding-top: 100px">
+  <div id="talks" class="container-fluid" style="padding-top: 150px">
 
   </div>
   <div id="talk-template" hidden>
@@ -78,8 +78,11 @@
         <a href="#" class="col-md-12 col-xs-12 toggle-description">toggle description and speakers</a>
       </div>
       <div class="row">
-        <div class="col-md-12 col-xs-12 description" style="display: none"><strong>Description:</strong> {{description}}</div>
-        <div class="col-md-12 col-xs-12 speakers" style="display: none"><strong>Speakers:</strong> {{speakers}}</div>
+        <div class="col-md-12 col-xs-12 description" style="display: none">
+          <strong>Description:</strong> {{description}}
+          <br>
+          <strong>Speakers:</strong> {{speakers}}
+        </div>
       </div>
       <div class="row">
         <div class="col-md-12 col-xs-12">
