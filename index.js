@@ -31,13 +31,17 @@ var transformTalks = function(rawData) {
   });
 };
 
-var filterAndRenderTalks = function(talks) {
-  talks = talks || scheduledTalks;
-  var filteredTalks = filterTalks(talks);
+var filterAndRenderTalks = function() {
+  var filteredTalks = filterTalks(scheduledTalks);
+  renderTalks(filteredTalks);
+};
+
+var renderTalks = function(talks) {
+  window.scrollTo && window.scrollTo(0, 0);
   var rememberedTalkIds = getRememberedTalkIds();
   var talksContent = '';
   var talkTemplate = talkTemplateElement.html();
-  filteredTalks.forEach(function(talk) {
+  talks.forEach(function(talk) {
     var isRememberedTalk = rememberedTalkIds.indexOf(talk.id) > -1;
     var action = isRememberedTalk ? 'forget' : 'remember';
     talksContent += talkTemplate
@@ -51,7 +55,7 @@ var filterAndRenderTalks = function(talks) {
       .replace('{{speakers}}', talk.speakers);
   });
   talksElement.html(talksContent);
-};
+}
 
 var filterTalks = function(talks) {
   return talks.filter(function(talk) {
@@ -137,7 +141,7 @@ $('#show-remembered-talks').click(function() {
   var talksToRender = scheduledTalks.filter(function(talk) {
     return talkIds.indexOf(talk.id) > -1;
   });
-  filterAndRenderTalks(talksToRender);
+  renderTalks(talksToRender);
 });
 
 $('#show-schedule').click(function() {

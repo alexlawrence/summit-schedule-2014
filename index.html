@@ -10,12 +10,12 @@
 <body>
   <div id="navigation" style="position:fixed;background-color:#FFF;overflow:auto;z-index:1;width:100%" class="container-fluid">
     <div class="row">
-      <div class="col-md-12 col-xs-12">
+      <div class="col-md-12">
         <h3>Summit schedule 2014</h3>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12 col-xs-12">
+      <div class="col-md-12">
         Filter date:
         <select id="filter-date">
           <option value="nov5">Wednesday</option>
@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12 col-xs-12">
+      <div class="col-md-12">
         Filter location:
         <select id="filter-location">
           <option value="all">all</option>
@@ -42,7 +42,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12 col-xs-12">
+      <div class="col-md-12">
         Sort by:
         <select id="sort">
           <option value="time_asc">Start</option>
@@ -53,7 +53,7 @@
        </div>
     </div>
     <div class="row">
-      <div class="col-md-12 col-xs-12">
+      <div class="col-md-12">
         <button id="show-schedule" class="btn btn-xs btn-info">show schedule</button>
         <button id="show-remembered-talks" class="btn btn-xs btn-info">show remembered</button>
         <button id="delete-remembered-talks" class="btn btn-xs btn-info">delete remembered</button>
@@ -66,26 +66,26 @@
   <div id="talk-template" hidden>
     <div class="talk" style="margin-bottom: 20px">
       <div class="row">
-        <div class="col-md-12 col-xs-12">{{start_time}} - {{end_time}}</div>
+        <div class="col-md-12">{{start_time}} - {{end_time}}</div>
       </div>
       <div class="row">
-        <div class="col-md-12 col-xs-12"><strong>{{title}}</strong></div>
+        <div class="col-md-12"><strong>{{title}}</strong></div>
       </div>
       <div class="row">
-        <div class="col-md-12 col-xs-12">{{location}}</div>
+        <div class="col-md-12">{{location}}</div>
       </div>
       <div class="row">
-        <a href="#" class="col-md-12 col-xs-12 toggle-description">toggle description and speakers</a>
+        <a href="#" class="col-md-12 toggle-description">toggle description and speakers</a>
       </div>
       <div class="row">
-        <div class="col-md-12 col-xs-12 description" style="display: none">
+        <div class="col-md-12 description" style="display: none">
           <strong>Description:</strong> {{description}}
           <br>
           <strong>Speakers:</strong> {{speakers}}
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12 col-xs-12">
+        <div class="col-md-12">
           <button class="{{action}}-talk btn btn-xs btn-primary" data-id="{{id}}">{{action}} talk</button>
         </div>
       </div>
