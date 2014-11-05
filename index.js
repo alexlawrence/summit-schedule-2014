@@ -5,6 +5,7 @@ var talksUrl = 'https://websummit.cloudant.com/websummit2014/_all_docs?include_d
 var filterCriteria = {
   date: 'nov5'
 };
+var showingRememberedTalks = false;
 
 var transformTalks = function(rawData) {
   console.log(rawData.rows[0]);
@@ -72,7 +73,10 @@ var forgetTalk = function(talkId) {
   var talkIds = getRememberedTalkIds();
   var indexOf = talkIds.indexOf(talkId);
   if (indexOf > -1) {
-    talkIds = talkIds.splice(indexOf, 1);
+    if (talkIds.length > 1)
+      talkIds = talkIds.splice(indexOf, 1);
+    else
+      talkIds = [];
     localStorage.setItem('rememberedTalkIds', JSON.stringify(talkIds));
   }
 };
@@ -121,6 +125,7 @@ $('#sort').change(function(event) {
 });
 
 $('#show-remembered-talks').click(function() {
+  showingRememberedTalks = true;
   var talkIds = getRememberedTalkIds();
   var talksToRender = scheduledTalks.filter(function(talk) {
     return talkIds.indexOf(talk.id) > -1;
@@ -129,6 +134,7 @@ $('#show-remembered-talks').click(function() {
 });
 
 $('#show-schedule').click(function() {
+  showingRememberedTalks = false;
   filterAndRenderTalks();
 });
 
@@ -148,7 +154,12 @@ $(document).on('click', '.forget-talk', function(event) {
   var button = $(event.target);
   var talkId = button.data('id');
   forgetTalk(talkId);
-  button.removeClass('forget-talk').addClass('remember-talk').html('remember talk');
+  if (showingRememberedTalks) {
+    button.closest('.talk').remove();
+  }
+  else {
+    button.removeClass('forget-talk').addClass('remember-talk').html('remember talk');
+  }
 });
 
 $(document).on('click', '.toggle-description', function(event) {
