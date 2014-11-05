@@ -70,8 +70,9 @@ var filterTalks = function(talks) {
   });
 };
 
-var sortTalks = function(key, order) {
-  scheduledTalks.sort(function(a, b) {
+var sortTalks = function(key, order, talks) {
+  talks = talks || scheduledTalks;
+  talks.sort(function(a, b) {
     return (order == 1) ? a[key] - b[key] : b[key] - a[key];
   });
 };
@@ -145,6 +146,7 @@ $('#show-remembered-talks').click(function() {
   var talksToRender = scheduledTalks.filter(function(talk) {
     return talkIds.indexOf(talk.id) > -1;
   });
+  sortTalks('start_time_numeric', 1, talksToRender);
   renderTalks(talksToRender);
 });
 
