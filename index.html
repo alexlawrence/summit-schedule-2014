@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
 </head>
 <body>
-  <div id="navigation" style="position:fixed" class="container-fluid">
+  <div id="navigation" style="position:fixed;background-color:#FFF;overflow:auto;z-index:1;" class="container-fluid">
     <div class="row">
       <div class="col-md-12">
         Filter date:
@@ -43,34 +43,37 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <button id="show-schedules" class="btn btn-xs btn-info">show schedule</button>
+        <button id="show-schedule" class="btn btn-xs btn-info">show schedule</button>
         <button id="show-remembered-talks" class="btn btn-xs btn-info">show remembered</button>
         <button id="delete-remembered-talks" class="btn btn-xs btn-info">delete remembered</button>
       </div>
     </div>
   </div>
-  <div id="talks" class="container-fluid">
+  <div id="talks" class="container-fluid" style="padding-top: 100px">
 
   </div>
   <div id="talk-template" hidden>
-    <div class="row">
-      <div class="col-md-12">{{start_time}} - {{end_time}}</div>
-    </div>
-    <div class="row">
-      <div class="col-md-12"><strong>{{title}}</strong></div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">{{location}}</div>
-    </div>
-    <div class="row">
-      <a href="#" class="col-md-12 toggle-description">toggle description</a>
-    </div>
-    <div class="row">
-      <div class="col-md-12 description" style="display: none">{{description}}</div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <button class="{{action}}-talk btn btn-xs btn-primary" data-id="{{id}}">{{action}} talk</button>
+    <div class="talk" style="margin-bottom: 20px">
+      <div class="row">
+        <div class="col-md-12">{{start_time}} - {{end_time}}</div>
+      </div>
+      <div class="row">
+        <div class="col-md-12"><strong>{{title}}</strong></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">{{location}}</div>
+      </div>
+      <div class="row">
+        <a href="#" class="col-md-12 toggle-description">toggle description</a>
+      </div>
+      <div class="row">
+        <div class="col-md-12 description" style="display: none">{{description}}</div>
+        <div class="col-md-12 speakers" style="display: none">{{speakers}}</div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <button class="{{action}}-talk btn btn-xs btn-primary" data-id="{{id}}">{{action}} talk</button>
+        </div>
       </div>
     </div>
   </div>

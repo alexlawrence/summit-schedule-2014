@@ -20,7 +20,11 @@ var transformTalks = function(rawData) {
       end_time: row.doc.end_time,
       location: row.doc.summit.name,
       locationId: row.doc.summit.value,
-      date: row.doc.date.value
+      date: row.doc.date.value,
+      speakers: row.doc.speakers
+        .filter(function(item) { return item && item.speaker; })
+        .map(function(item) { return item.speaker.name; })
+        .join(', ')
     }
   });
 };
@@ -41,7 +45,8 @@ var filterAndRenderTalks = function(talks) {
       .replace('{{end_time}}', talk.end_time)
       .replace('{{title}}', talk.title)
       .replace('{{location}}', talk.location)
-      .replace('{{description}}', talk.description);
+      .replace('{{description}}', talk.description)
+      .replace('{{speakers}}', talk.speakers);
   });
   talksElement.html(talksContent);
 };
@@ -163,6 +168,8 @@ $(document).on('click', '.forget-talk', function(event) {
 });
 
 $(document).on('click', '.toggle-description', function(event) {
-  $(this).closest('.talk').find('.description').toggle();
+  var talk = $(this).closest('.talk');
+  talk.find('.description').toggle();
+  talk.find('.speakers').toggle();
   return false;
 });
