@@ -88,7 +88,7 @@ var forgetTalk = function(talkId) {
   var indexOf = talkIds.indexOf(talkId);
   if (indexOf > -1) {
     if (talkIds.length > 1)
-      talkIds = talkIds.splice(indexOf, 1);
+      talkIds.splice(indexOf, 1);
     else
       talkIds = [];
     localStorage.setItem('rememberedTalkIds', JSON.stringify(talkIds));
