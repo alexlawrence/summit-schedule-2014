@@ -136,6 +136,7 @@ $('#sort').change(function(event) {
 });
 
 $('#show-remembered-talks').click(function() {
+  $('#filter-and-sorting').hide();
   showingRememberedTalks = true;
   var talkIds = getRememberedTalkIds();
   var talksToRender = scheduledTalks.filter(function(talk) {
@@ -145,12 +146,8 @@ $('#show-remembered-talks').click(function() {
 });
 
 $('#show-schedule').click(function() {
+  $('#filter-and-sorting').show();
   showingRememberedTalks = false;
-  filterAndRenderTalks();
-});
-
-$('#delete-remembered-talks').click(function() {
-  localStorage.setItem('rememberedTalkIds', '[]');
   filterAndRenderTalks();
 });
 

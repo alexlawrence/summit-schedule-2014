@@ -3,20 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Summit schedule</title>
+  <title>Summit schedule 2014</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
 </head>
 <body>
-  <div id="navigation" style="position:fixed;background-color:#FFF;overflow:auto;z-index:1;width:100%" class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <h3>Summit schedule 2014</h3>
-      </div>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-collapse">
+      <a id="show-schedule" class="navbar-brand">Schedule</a>
+      <a id="show-remembered-talks" class="navbar-brand">Remembered</a>
     </div>
+  </div>
+  <div id="spacing" style="height: 60px"></div>
+  <div id="filter-and-sorting" class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-        Filter date:
+        Date:
         <select id="filter-date">
           <option value="nov5">Wednesday</option>
           <option value="nov6">Thursday</option>
@@ -25,7 +27,7 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        Filter location:
+        Location:
         <select id="filter-location">
           <option value="all">all</option>
           <option value="main">main</option>
@@ -43,7 +45,7 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        Sort by:
+        Sorting:
         <select id="sort">
           <option value="time_asc">Start</option>
           <option value="time_desc">Start (reverse)</option>
@@ -52,19 +54,12 @@
         </select>
        </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <button id="show-schedule" class="btn btn-xs btn-info">show schedule</button>
-        <button id="show-remembered-talks" class="btn btn-xs btn-info">show remembered</button>
-        <button id="delete-remembered-talks" class="btn btn-xs btn-info">delete remembered</button>
-      </div>
-    </div>
   </div>
-  <div id="talks" class="container-fluid" style="padding-top: 150px">
+  <div id="talks" class="container-fluid" style="margin-top: 20px">
 
   </div>
   <div id="talk-template" hidden>
-    <div class="talk" style="margin-bottom: 20px">
+    <div class="talk" style="margin-bottom: 25px">
       <div class="row">
         <div class="col-md-12">{{start_time}} - {{end_time}}</div>
       </div>
@@ -75,7 +70,7 @@
         <div class="col-md-12">{{location}}</div>
       </div>
       <div class="row">
-        <a href="#" class="col-md-12 toggle-description">toggle description and speakers</a>
+        <a href="#" class="col-md-12 toggle-description">show/hide description & speakers</a>
       </div>
       <div class="row">
         <div class="col-md-12 description" style="display: none">
