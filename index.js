@@ -46,9 +46,11 @@ var renderTalks = function(talks) {
   talks.forEach(function(talk) {
     var isRememberedTalk = rememberedTalkIds.indexOf(talk.id) > -1;
     var action = isRememberedTalk ? 'forget' : 'remember';
+    var button = isRememberedTalk ? 'info' : 'primary';
     talksContent += talkTemplate
       .replace(/\{\{id\}\}/g, talk.id)
       .replace(/\{\{action\}\}/g, action)
+      .replace('{{button}}', button)
       .replace('{{start_time}}', talk.start_time)
       .replace('{{end_time}}', talk.end_time)
       .replace('{{title}}', talk.title)
@@ -160,7 +162,11 @@ $(document).on('click', '.remember-talk', function(event) {
   var button = $(event.target);
   var talkId = button.data('id');
   rememberTalk(talkId);
-  button.removeClass('remember-talk').addClass('forget-talk').html('forget talk');
+  button.removeClass('remember-talk')
+    .removeClass('btn-primary')
+    .addClass('forget-talk')
+    .addClass('btn-info')
+    .html('forget talk');
 });
 
 $(document).on('click', '.forget-talk', function(event) {
@@ -171,7 +177,11 @@ $(document).on('click', '.forget-talk', function(event) {
     button.closest('.talk').remove();
   }
   else {
-    button.removeClass('forget-talk').addClass('remember-talk').html('remember talk');
+    button.removeClass('forget-talk')
+      .removeClass('btn-info')
+      .addClass('remember-talk')
+      .addClass('btn-primary')
+      .html('remember talk');
   }
 });
 
